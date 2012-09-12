@@ -1,6 +1,6 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@page import="jp.itacademy.samples.web.mvc.counter.Counter" %>
-<% Counter counter = (Counter)session.getAttribute("counter"); %>
+<% Counter counter = (Counter)application.getAttribute("counter"); %>
 
 <!DOCTYPE html>
 

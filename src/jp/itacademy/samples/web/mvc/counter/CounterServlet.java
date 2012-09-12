@@ -1,6 +1,8 @@
 package jp.itacademy.samples.web.mvc.counter;
 
 import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +16,12 @@ public class CounterServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req,
 			HttpServletResponse res) throws ServletException, IOException {
 		
-		HttpSession session = req.getSession();
-		Counter counter = (Counter) session.getAttribute("counter");
+		ServletContext context = getServletContext();
+		Counter counter = (Counter) context.getAttribute("counter");
 		
-		if (counter == null) {
+		if (counter == null){
 			counter = new Counter();
-			session.setAttribute("counter", counter );
+			context.setAttribute("counter" , counter);
 		}
 		counter.inc();
 		
